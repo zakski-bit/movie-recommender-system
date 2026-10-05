@@ -1,7 +1,7 @@
 # CineMatch — End-to-End Movie Recommender System
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/zakski-bit/movie-recommender-system/blob/main/proyek_akhir_sistem_rekomendasi.ipynb)
-[![Live Demo on Vercel](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=flat&logo=vercel)](https://github.com/zakski-bit/movie-recommender-system)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1INLUzym1GanvzJL8NU3YgXJeYVfl0K8N?usp=sharing)
+[![Live Demo on Vercel](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=flat&logo=vercel)](https://movie-recommender-system-mu-sable.vercel.app/)
 [![Python](https://img.shields.io/badge/Python-3.10-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.19-FF6F00.svg?style=flat&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3-F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
@@ -68,7 +68,7 @@ movie-recommender-system/
 2. Klik **"Add New..."** → **"Project"**.
 3. Hubungkan akun GitHub Anda dan pilih repositori `movie-recommender-system`.
 4. Pada pengaturan *Framework Preset*, biarkan default (**Other**) karena proyek ini berbasis *Clean Static HTML/JS*.
-5. Klik **"Deploy"**. Dalam hitungan detik, aplikasi web demo Anda akan live dengan URL publik (misal: `https://movie-recommender-system.vercel.app`)!
+5. Klik **"Deploy"**. Dalam hitungan detik, aplikasi web demo Anda akan live dengan URL publik (misal: `https://movie-recommender-system-mu-sable.vercel.app/`)!
 
 ### Opsi 3: Jalankan Secara Lokal di Komputer Anda
 ```bash
