@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineMatch — MovieLens Recommendation Engine</title>
+  <meta name="description" content="Sistem rekomendasi film berbasis Content-Based Filtering (TF-IDF & Cosine Similarity) dan Deep Learning Collaborative Filtering (TensorFlow/Keras) pada dataset MovieLens 100K.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <span class="brand-icon">🎬</span>
+        <div class="brand-text">
+          <span class="brand-title">CineMatch</span>
+          <span class="brand-subtitle">MovieLens Machine Learning Engine</span>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="status-pill status-ready" id="statusBadge">Memuat Data...</span>
+        <a href="https://github.com/zakski-bit/movie-recommender-system" target="_blank" rel="noopener noreferrer" class="btn-github">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://colab.research.google.com/github/zakski-bit/movie-recommender-system/blob/main/proyek_akhir_sistem_rekomendasi.ipynb" target="_blank" rel="noopener noreferrer" class="btn-colab">
+          <span>Open in Colab</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    
+    <!-- Tab Navigation -->
+    <div class="tabs-nav" role="tablist">
+      <button class="tab-btn active" role="tab" aria-selected="true" data-tab="content-based">
+        <span class="tab-num">01</span>
+        <span class="tab-label">Content-Based Filtering</span>
+        <span class="tab-badge">Cosine Similarity</span>
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="collaborative">
+        <span class="tab-num">02</span>
+        <span class="tab-label">Collaborative Filtering</span>
+        <span class="tab-badge">Deep Learning</span>
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="benchmarks">
+        <span class="tab-num">03</span>
+        <span class="tab-label">Arsitektur & Benchmark</span>
+        <span class="tab-badge">Evaluasi</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: CONTENT-BASED FILTERING -->
+    <section id="tab-content-based" class="tab-content active">
+      <div class="section-intro">
+        <h2>Content-Based Filtering via Cosine Similarity</h2>
+        <p>Merekomendasikan film baru dengan kemiripan profil genre tertinggi terhadap film pilihan Anda menggunakan pembobotan vektor <strong>TF-IDF</strong> dan kalkulasi <strong>Cosine Similarity</strong>.</p>
+      </div>
+
+      <!-- Search Section -->
+      <div class="search-card">
+        <label for="movieSearchInput" class="search-label">Cari Judul Film Acuan (Katalog 9.737 Film):</label>
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="movieSearchInput" placeholder="Ketik judul film, misal: Toy Story, Inception, Matrix, Pulp Fiction..." autocomplete="off">
+          <button id="clearSearchBtn" class="clear-btn" title="Hapus pencarian" style="display: none;">✕</button>
+          <!-- Autocomplete Dropdown -->
+          <div id="autocompleteList" class="autocomplete-dropdown" style="display: none;"></div>
+        </div>
+
+        <!-- Quick Pick Chips -->
+        <div class="quick-picks">
+          <span class="quick-pick-label">Coba rekomendasi cepat:</span>
+          <div class="chip-group" id="quickPickGroup">
+            <button class="chip" data-title="Toy Story (1995)">Toy Story (1995)</button>
+            <button class="chip" data-title="Dark Knight, The (2008)">The Dark Knight (2008)</button>
+            <button class="chip" data-title="Inception (2010)">Inception (2010)</button>
+            <button class="chip" data-title="Pulp Fiction (1994)">Pulp Fiction (1994)</button>
+            <button class="chip" data-title="Matrix, The (1999)">The Matrix (1999)</button>
+            <button class="chip" data-title="Forrest Gump (1994)">Forrest Gump (1994)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Movie Details Card -->
+      <div id="activeMovieCard" class="active-movie-card" style="display: none;">
+        <div class="active-movie-header">
+          <span class="active-badge">Film Acuan Terpilih</span>
+          <span class="active-movie-year" id="targetYear"></span>
+        </div>
+        <h3 id="targetTitle" class="active-movie-title"></h3>
+        <div class="active-movie-meta">
+          <div class="genres-list" id="targetGenres"></div>
+          <div class="active-stats">
+            <span class="stat-item" id="targetRating"></span>
+            <span class="stat-item" id="targetVotes"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation Results -->
+      <div class="results-header" id="resultsHeader" style="display: none;">
+        <div class="results-title-group">
+          <h3>Top-10 Rekomendasi Film Serupa</h3>
+          <span class="precision-pill">Precision@10: <strong id="cbPrecision">100%</strong></span>
+        </div>
+        <span class="results-subtitle">Berdasarkan kesamaan kosinus profil genre</span>
+      </div>
+
+      <!-- Results Grid -->
+      <div id="recommendationsGrid" class="movies-grid"></div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">🎬</div>
+        <h3>Pilih atau cari film acuan di atas</h3>
+        <p>Gunakan kolom pencarian atau klik salah satu rekomendasi cepat untuk melihat 10 film dengan kesamaan genre tertinggi.</p>
+      </div>
+
+      <!-- Loading State -->
+      <div id="loadingState" class="loading-state" style="display: none;">
+        <div class="spinner"></div>
+        <p>Menghitung kemiripan kosinus terhadap 9.737 film...</p>
+      </div>
+    </section>
+
+    <!-- TAB 2: COLLABORATIVE FILTERING -->
+    <section id="tab-collaborative" class="tab-content">
+      <div class="section-intro">
+        <h2>Collaborative Filtering (Neural RecommenderNet)</h2>
+        <p>Model pembelajaran mendalam (TensorFlow/Keras) yang mempelajari pola laten (*latent factors*) preferensi dari 100.000+ interaksi rating untuk menyajikan rekomendasi lintas-genre yang dipersonalisasi.</p>
+      </div>
+
+      <!-- User Persona Selector -->
+      <div class="persona-selector-card">
+        <label for="userSelect" class="search-label">Pilih Profil Pengguna untuk Simulasi Rekomendasi:</label>
+        <select id="userSelect" class="user-select-dropdown"></select>
+        <p class="user-desc" id="userDescription"></p>
+      </div>
+
+      <!-- 2-Column Split: Past Ratings vs Predicted Recommendations -->
+      <div class="cf-columns">
+        <!-- Column 1: Past High Ratings -->
+        <div class="cf-col">
+          <div class="cf-col-header">
+            <h3>⭐ Riwayat Film Favorit Pengguna</h3>
+            <span class="badge-sub">Film yang diberi rating 4.0 - 5.0</span>
+          </div>
+          <div id="userTopRatedList" class="cf-cards-list"></div>
+        </div>
+
+        <!-- Column 2: Predicted Top-10 -->
+        <div class="cf-col">
+          <div class="cf-col-header">
+            <h3>🎯 Top-10 Rekomendasi Model RecommenderNet</h3>
+            <span class="badge-sub">Film baru belum ditonton dengan estimasi tertinggi</span>
+          </div>
+          <div id="userPredictedList" class="cf-cards-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: BENCHMARK & METRICS -->
+    <section id="tab-benchmarks" class="tab-content">
+      <div class="section-intro">
+        <h2>Spesifikasi Teknis & Hasil Evaluasi Model</h2>
+        <p>Rangkuman arsitektur, parameter, metrik evaluasi kuantitatif, diagnosis overfitting, dan perbandingan terhadap tolok ukur industri.</p>
+      </div>
+
+      <!-- Metrics Grid -->
+      <div class="metrics-summary-grid">
+        <div class="metric-card">
+          <span class="metric-label">Precision@10 (Content-Based)</span>
+          <span class="metric-value text-accent">100.00%</span>
+          <span class="metric-desc">10 dari 10 film relevan tematik</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">MAE Validasi (Skala 0.5 - 5.0)</span>
+          <span class="metric-value">0.7494</span>
+          <span class="metric-desc">Rata-rata margin error &lt; 0.75 bintang</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">RMSE Validasi (Skala 0.5 - 5.0)</span>
+          <span class="metric-value">0.9796</span>
+          <span class="metric-desc">Akar kuadrat rata-rata error rating</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Dataset Benchmark</span>
+          <span class="metric-value">MovieLens 100K</span>
+          <span class="metric-desc">100.836 rating • 610 user • 9.719 film</span>
+        </div>
+      </div>
+
+      <!-- Deep Dive Analysis Grid -->
+      <div class="analysis-grid">
+        <!-- Architecture Card -->
+        <div class="analysis-card">
+          <h3>Arsitektur Jaringan RecommenderNet</h3>
+          <ul class="spec-list">
+            <li><strong>User Embedding:</strong> 610 pengguna dipetakan ke vektor laten 50 dimensi (inisialisasi <code>he_normal</code>).</li>
+            <li><strong>Movie Embedding:</strong> 9.719 film dipetakan ke vektor laten 50 dimensi (inisialisasi <code>he_normal</code>).</li>
+            <li><strong>Bias Terms:</strong> Lapisan skalar bias untuk pengguna dan film guna menangkap kecenderungan rating individual dan popularitas umum film.</li>
+            <li><strong>Interaksi & Aktivasi:</strong> Perkalian titik (*dot product*) antarvektor dijumlahkan dengan bias dan diaktivasi menggunakan fungsi <code>Sigmoid</code> untuk memetakan output ke rentang $[0, 1]$.</li>
+            <li><strong>Total Parameter:</strong> 526.789 parameter terbobot.</li>
+          </ul>
+        </div>
+
+        <!-- Overfitting Diagnosis Card -->
+        <div class="analysis-card">
+          <h3>Diagnosis Overfitting & Rencana Optimasi</h3>
+          <p class="analysis-text">
+            Berdasarkan log kurva validasi per epoch:
+          </p>
+          <ul class="spec-list">
+            <li><strong>Titik Optimum:</strong> Validasi mencapai error terendah pada <strong>Epoch 3</strong> (Loss: 0.6002, RMSE: 0.1903).</li>
+            <li><strong>Divergensi:</strong> Dari epoch 4 hingga 20, loss latih terus turun ke 0.5163 (RMSE 0.0458), tetapi loss validasi berbalik menanjak ke <strong>0.6423</strong> (RMSE 0.2177) — selisih hampir 5 kali lipat.</li>
+            <li><strong>Akar Masalah:</strong> Regularisasi L2 sebesar <code>1e-6</code> terlalu lemah untuk menahan 526k parameter pada 80k interaksi latih.</li>
+            <li><strong>Tindak Lanjut:</strong> Menerapkan <code>EarlyStopping(patience=3)</code>, menaikkan L2 ke <code>1e-4..1e-3</code>, dan mereduksi dimensi embedding ke 16–32.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Baseline Comparison Table -->
+      <div class="table-card">
+        <h3>Perbandingan Terhadap Baseline Standar MovieLens 100K</h3>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Model / Algoritma</th>
+              <th>Pendekatan</th>
+              <th>RMSE (Skala 1-5)</th>
+              <th>Kelebihan / Karakteristik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Matrix Factorization (Biased SVD)</strong><br><small class="text-muted">Koren et al., 2009; Harper & Konstan, 2015</small></td>
+              <td>Collaborative Filtering (Faktorisasi Matriks)</td>
+              <td><span class="badge-benchmark">0.87 – 0.92</span></td>
+              <td>Tolok ukur standar akademis; generalisasi sangat stabil pada data rating tabular.</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>RecommenderNet (Proyek Ini)</strong><br><small class="text-muted">Zaki Abdussalam (2026)</small></td>
+              <td>Deep Learning Embedding Layers (Keras)</td>
+              <td><span class="badge-our">0.9796</span></td>
+              <td>Mampu menangkap interaksi nonlinear dan diversitas rekomendasi tinggi; memerlukan EarlyStopping untuk mencapai performa optimal.</td>
+            </tr>
+            <tr>
+              <td><strong>Content-Based (TF-IDF + Cosine)</strong><br><small class="text-muted">Proyek Ini</small></td>
+              <td>Content-Based Genre Vectorization</td>
+              <td><span class="badge-cb">Precision@10: 100%</span></td>
+              <td>Bebas dari masalah cold-start item baru; sangat transparan dan deterministik.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>Dibangun oleh <strong>Zaki Abdussalam</strong> • Proyek Akhir Machine Learning Terapan (Dicoding Indonesia).</p>
+      <p class="footer-sub">Dataset MovieLens dikelola oleh GroupLens Research, University of Minnesota.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

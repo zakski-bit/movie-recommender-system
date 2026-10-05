@@ -1,0 +1,10 @@
+EVALUATION RESULTS:
+- Content-Based Target Movie: Toy Story (1995)
+- Content-Based Target Genre: Adventure|Animation|Children|Comedy|Fantasy
+- Content-Based Precision@10: 100.00% (10/10)
+- Collaborative Filtering Validation Loss: 0.6425
+- Collaborative Filtering Validation RMSE (Normalized): 0.2180
+- Collaborative Filtering Validation MAE (Normalized): 0.1668
+- Collaborative Filtering Validation RMSE (Original Scale): 0.9810
+- Collaborative Filtering Validation MAE (Original Scale): 0.7506
+- Sample User ID: 133
