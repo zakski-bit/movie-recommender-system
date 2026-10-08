@@ -16,20 +16,20 @@ Proyek ini dilengkapi dengan:
 
 ---
 
-## 🎯 Ringkasan Kinerja & Evaluasi Model
+## Ringkasan Kinerja & Evaluasi Model
 
 | Pendekatan Rekomendasi | Arsitektur / Model | Metrik Evaluasi | Nilai Kuantitatif Aktual | Karakteristik Utama |
 | :--- | :--- | :---: | :---: | :--- |
 | **Content-Based Filtering** | TF-IDF Vectorizer + Cosine Similarity | **Precision@10** | **100.00%** | Memetakan kesamaan tematik genre; bebas dari masalah *cold-start* item baru. |
 | **Collaborative Filtering** | RecommenderNet (50-dim Embeddings, Keras) | **RMSE (Skala Asli 0.5 - 5.0)**<br>**MAE (Skala Asli 0.5 - 5.0)**<br>**Binary Crossentropy (Loss)** | **0.9796**<br>**0.7494**<br>**0.6423** | Menemukan preferensi laten lintas-genre (*serendipity*); merefleksikan pola konsumsi komunitas. |
 
-### 🔬 Catatan Diagnostik & Analisis Baseline
+### Catatan Diagnostik & Analisis Baseline
 - **Dinamika Pelatihan:** Model mencapai performa validasi optimal pada **Epoch ke-3** (Loss: `0.6002`, RMSE: `0.1903`), setelah itu kurva validasi menunjukkan divergensi *overfitting* menuju Epoch 20 (RMSE train `0.0458` vs val `0.2177`).
 - **Perbandingan Terhadap Baseline:** Model Matrix Factorization standar (*Biased SVD*, Koren et al., 2009; Harper & Konstan, 2015) pada MovieLens 100K umumnya mencatat RMSE di kisaran **0,87 – 0,92**. Skor RecommenderNet kita (`0.9796`) mencerminkan batas arsitektur sebelum regularisasi diperkuat (*actionable remediation*: penerapan `EarlyStopping(patience=3)` dan pengetatan L2 `1e-4`).
 
 ---
 
-## 🌐 Fitur Aplikasi Web Demo (Siap Vercel)
+## Fitur Aplikasi Web Demo (Siap Vercel)
 Aplikasi web yang disertakan dirancang dengan prinsip **Ponytail Dev** (kode minimal, performa maksimal, tanpa dependensi berlebih) dan **Anti AI-Slop** (desain sinematik modern bertema *dark slate*, tipografi tajam, navigasi jelas):
 1. **Interactive Content-Based Engine:** Cari dan pilih dari **9.737 film**, sistem menghitung derajat *Cosine Similarity* secara *real-time* di peramban (&lt; 2ms) dan menyajikan Top-10 film paling relevan beserta persentase kecocokan.
 2. **Collaborative Filtering Simulation:** Pilih profil persona pengguna (termasuk User 133 yang diuji dalam penelitian) untuk membandingkan riwayat tontonan masa lalu vs rekomendasi prediksi model.
@@ -37,7 +37,7 @@ Aplikasi web yang disertakan dirancang dengan prinsip **Ponytail Dev** (kode min
 
 ---
 
-## 📂 Struktur Berkas Repositori
+## Struktur Berkas Repositori
 ```text
 movie-recommender-system/
 ├── index.html                             # Antarmuka Web Demo Utama (Vercel)
@@ -55,7 +55,7 @@ movie-recommender-system/
 
 ---
 
-## 🚀 Panduan Menjalankan Proyek
+## Panduan Menjalankan Proyek
 
 ### Opsi 1: Jalankan di Google Colab (Paling Praktis)
 1. Buka [Google Colab](https://colab.research.google.com/).
@@ -87,7 +87,7 @@ python -m http.server 8000
 
 ---
 
-## 📚 Referensi Ilmiah
+## Referensi Ilmiah
 1. Ricci, F., Rokach, L., & Shapira, B. (2015). *Recommender Systems Handbook*. Springer.
 2. Harper, F. M., & Konstan, J. A. (2015). The MovieLens Datasets: History and Context. *ACM Transactions on Interactive Intelligent Systems (TiiS)*, 5(4), 1-19.
 3. Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix factorization techniques for recommender systems. *Computer*, 42(8), 30-37.
