@@ -11,7 +11,8 @@
           "Sci-Fi",
           "Thriller"
         ],
-        "rating": 4.0
+        "rating": 4.0,
+        "poster": "https://image.tmdb.org/t/p/w500/gt3iyguaCIw8DpQZI1LIN5TohM2.jpg"
       },
       {
         "title": "Shawshank Redemption, The (1994)",
@@ -19,7 +20,8 @@
           "Crime",
           "Drama"
         ],
-        "rating": 4.0
+        "rating": 4.0,
+        "poster": "https://image.tmdb.org/t/p/w500/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"
       },
       {
         "title": "Forrest Gump (1994)",
@@ -29,21 +31,24 @@
           "Romance",
           "War"
         ],
-        "rating": 4.0
+        "rating": 4.0,
+        "poster": "https://image.tmdb.org/t/p/w500/Cw4hIUIAmSYfK9QfaUW5igp9La.jpg"
       },
       {
         "title": "Fugitive, The (1993)",
         "genres": [
           "Thriller"
         ],
-        "rating": 4.0
+        "rating": 4.0,
+        "poster": "https://image.tmdb.org/t/p/w500/b3rEtLKyOnF89mcK75GXDXdmOEf.jpg"
       },
       {
         "title": "Hudsucker Proxy, The (1994)",
         "genres": [
           "Comedy"
         ],
-        "rating": 4.0
+        "rating": 4.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMzNkYzI4ZTYtZjJlZC00ZTVjLTk2MDYtYWMwODA0NmFiYTIwXkEyXkFqcGdeQXVyNDk3NzU2MTQ@..jpg"
       }
     ],
     "recommendations": [
@@ -53,7 +58,8 @@
         "genres": [
           "Drama"
         ],
-        "predicted_rating": 4.26
+        "predicted_rating": 4.26,
+        "poster": "https://m.media-amazon.com/images/M/MV5BOGYwYWNjMzgtNGU4ZC00NWQ2LWEwZjUtMzE1Zjc3NjY3YTU1XkEyXkFqcGdeQXVyMTQxNzMzNDI@..jpg"
       },
       {
         "rank": 2,
@@ -64,7 +70,8 @@
           "Romance",
           "Thriller"
         ],
-        "predicted_rating": 4.24
+        "predicted_rating": 4.24,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYTE4ODEwZDUtNDFjOC00NjAxLWEzYTQtYTI1NGVmZmFlNjdiL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@..jpg"
       },
       {
         "rank": 3,
@@ -73,7 +80,8 @@
           "Action",
           "Adventure"
         ],
-        "predicted_rating": 4.14
+        "predicted_rating": 4.14,
+        "poster": "https://image.tmdb.org/t/p/w500/ceG9VzoRAVGwivFU403Wc3AHRys.jpg"
       },
       {
         "rank": 4,
@@ -83,7 +91,8 @@
           "Sci-Fi",
           "Thriller"
         ],
-        "predicted_rating": 4.09
+        "predicted_rating": 4.09,
+        "poster": "https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@..jpg"
       },
       {
         "rank": 5,
@@ -96,7 +105,8 @@
           "Drama",
           "Fantasy"
         ],
-        "predicted_rating": 4.09
+        "predicted_rating": 4.09,
+        "poster": "https://image.tmdb.org/t/p/w500/2H1TmgdfNtsKlU9jKdeNyYL5y8T.jpg"
       },
       {
         "rank": 6,
@@ -106,7 +116,8 @@
           "Adventure",
           "Drama"
         ],
-        "predicted_rating": 4.08
+        "predicted_rating": 4.08,
+        "poster": "https://image.tmdb.org/t/p/w500/aDb548BOkFfI4nFm0kx8A3Ezh7H.jpg"
       },
       {
         "rank": 7,
@@ -116,7 +127,8 @@
           "Drama",
           "Romance"
         ],
-        "predicted_rating": 4.08
+        "predicted_rating": 4.08,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYjQ4ZDA4NGMtMTkwYi00NThiLThhZDUtZTEzNTAxOWYyY2E4XkEyXkFqcGdeQXVyMjUxODE0MDY@..jpg"
       },
       {
         "rank": 8,
@@ -127,7 +139,8 @@
           "Comedy",
           "Crime"
         ],
-        "predicted_rating": 4.07
+        "predicted_rating": 4.07,
+        "poster": "https://m.media-amazon.com/images/M/MV5BNDBmNGU4MTEtMmI2Mi00NjU1LTgxNTktMDQ1MDE0Y2MwMjYwXkEyXkFqcGdeQXVyNTAyODkwOQ@@..jpg"
       },
       {
         "rank": 9,
@@ -137,7 +150,8 @@
           "Drama",
           "Romance"
         ],
-        "predicted_rating": 4.06
+        "predicted_rating": 4.06,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTE2MDM4MTMtZmNkZC00Y2QyLWE0YjUtMTAxZGJmODMxMDM0XkEyXkFqcGdeQXVyNjc1NTYyMjg@..jpg"
       },
       {
         "rank": 10,
@@ -147,7 +161,8 @@
           "Crime",
           "Thriller"
         ],
-        "predicted_rating": 4.06
+        "predicted_rating": 4.06,
+        "poster": "https://image.tmdb.org/t/p/w500/kJZoAHq1SLDdWjeNGtlHAnGpmFV.jpg"
       }
     ]
   },
@@ -163,7 +178,8 @@
           "Drama",
           "War"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://image.tmdb.org/t/p/w500/on8Q9LhtHYNhmITjUMpgOUkIG8o.jpg"
       },
       {
         "title": "Excalibur (1981)",
@@ -171,7 +187,8 @@
           "Adventure",
           "Fantasy"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTQ3OTA5NjY3OV5BMl5BanBnXkFtZTcwNjAxOTI3MQ@@..jpg"
       },
       {
         "title": "Indiana Jones and the Last Crusade (1989)",
@@ -179,7 +196,8 @@
           "Action",
           "Adventure"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://image.tmdb.org/t/p/w500/sizg1AU8f8JDZX4QIgE4pjUMBvx.jpg"
       },
       {
         "title": "Pink Floyd: The Wall (1982)",
@@ -187,7 +205,8 @@
           "Drama",
           "Musical"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZDhlZTYxOTYtYTk3Ny00ZDljLTk3ZmItZTcxZWU5YTIyYmFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@..jpg"
       },
       {
         "title": "From Russia with Love (1963)",
@@ -196,7 +215,8 @@
           "Adventure",
           "Thriller"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZjBiNGNlNmItZTk2Zi00YjRlLTk1NzEtNDI2YTNmN2EwNDhlXkEyXkFqcGdeQXVyNDY2MTk1ODk@..jpg"
       }
     ],
     "recommendations": [
@@ -208,7 +228,8 @@
           "Adventure",
           "Sci-Fi"
         ],
-        "predicted_rating": 4.88
+        "predicted_rating": 4.88,
+        "poster": "https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg"
       },
       {
         "rank": 2,
@@ -218,7 +239,8 @@
           "Sci-Fi",
           "Thriller"
         ],
-        "predicted_rating": 4.85
+        "predicted_rating": 4.85,
+        "poster": "https://image.tmdb.org/t/p/w500/dXNAPwY7VrqMAo51EKhhCJfaGb5.jpg"
       },
       {
         "rank": 3,
@@ -230,7 +252,8 @@
           "Fantasy",
           "Romance"
         ],
-        "predicted_rating": 4.81
+        "predicted_rating": 4.81,
+        "poster": "https://image.tmdb.org/t/p/w500/2FC9L9MrjBoGHYjYZjdWQdopVYb.jpg"
       },
       {
         "rank": 4,
@@ -239,7 +262,8 @@
           "Action",
           "Adventure"
         ],
-        "predicted_rating": 4.79
+        "predicted_rating": 4.79,
+        "poster": null
       },
       {
         "rank": 5,
@@ -250,7 +274,8 @@
           "Drama",
           "Thriller"
         ],
-        "predicted_rating": 4.75
+        "predicted_rating": 4.75,
+        "poster": "https://image.tmdb.org/t/p/w500/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg"
       },
       {
         "rank": 6,
@@ -261,7 +286,8 @@
           "Drama",
           "Thriller"
         ],
-        "predicted_rating": 4.72
+        "predicted_rating": 4.72,
+        "poster": "https://image.tmdb.org/t/p/w500/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg"
       },
       {
         "rank": 7,
@@ -270,7 +296,8 @@
           "Adventure",
           "Fantasy"
         ],
-        "predicted_rating": 4.7
+        "predicted_rating": 4.7,
+        "poster": "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg"
       },
       {
         "rank": 8,
@@ -279,7 +306,8 @@
           "Crime",
           "Drama"
         ],
-        "predicted_rating": 4.68
+        "predicted_rating": 4.68,
+        "poster": "https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg"
       },
       {
         "rank": 9,
@@ -288,7 +316,8 @@
           "Horror",
           "Sci-Fi"
         ],
-        "predicted_rating": 4.65
+        "predicted_rating": 4.65,
+        "poster": "https://image.tmdb.org/t/p/w500/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg"
       },
       {
         "rank": 10,
@@ -298,7 +327,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.64
+        "predicted_rating": 4.64,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZmExNmEwYWItYmQzOS00YjA5LTk2MjktZjEyZDE1Y2QxNjA1XkEyXkFqcGdeQXVyMTQxNzMzNDI@..jpg"
       }
     ]
   },
@@ -315,7 +345,8 @@
           "Drama",
           "War"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BNzA2NmYxMWUtNzBlMC00MWM2LTkwNmQtYTFlZjQwODNhOWE0XkEyXkFqcGdeQXVyNTIzOTk5ODM@..jpg"
       },
       {
         "title": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1964)",
@@ -323,7 +354,8 @@
           "Comedy",
           "War"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZWI3ZTMxNjctMjdlNS00NmUwLWFiM2YtZDUyY2I3N2MxYTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg"
       },
       {
         "title": "Princess and the Warrior, The (Krieger und die Kaiserin, Der) (2000)",
@@ -331,7 +363,8 @@
           "Drama",
           "Romance"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": null
       },
       {
         "title": "It's a Wonderful Life (1946)",
@@ -341,7 +374,8 @@
           "Fantasy",
           "Romance"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZjc4NDZhZWMtNGEzYS00ZWU2LThlM2ItNTA0YzQ0OTExMTE2XkEyXkFqcGdeQXVyNjUwMzI2NzU@..jpg"
       },
       {
         "title": "2001: A Space Odyssey (1968)",
@@ -350,7 +384,8 @@
           "Drama",
           "Sci-Fi"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg"
       }
     ],
     "recommendations": [
@@ -361,7 +396,8 @@
           "Crime",
           "Drama"
         ],
-        "predicted_rating": 4.62
+        "predicted_rating": 4.62,
+        "poster": "https://image.tmdb.org/t/p/w500/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"
       },
       {
         "rank": 2,
@@ -370,7 +406,8 @@
           "Crime",
           "Drama"
         ],
-        "predicted_rating": 4.58
+        "predicted_rating": 4.58,
+        "poster": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
       },
       {
         "rank": 3,
@@ -379,7 +416,8 @@
           "Drama",
           "Romance"
         ],
-        "predicted_rating": 4.54
+        "predicted_rating": 4.54,
+        "poster": "https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@..jpg"
       },
       {
         "rank": 4,
@@ -388,7 +426,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.51
+        "predicted_rating": 4.51,
+        "poster": "https://m.media-amazon.com/images/M/MV5BNGUxYWM3M2MtMGM3Mi00ZmRiLWE0NGQtZjE5ODI2OTJhNTU0XkEyXkFqcGdeQXVyMTQxNzMzNDI@..jpg"
       },
       {
         "rank": 5,
@@ -400,7 +439,8 @@
           "Romance",
           "Thriller"
         ],
-        "predicted_rating": 4.49
+        "predicted_rating": 4.49,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZDA3NDExMTUtMDlhOC00MmQ5LWExZGUtYmI1NGVlZWI4OWNiXkEyXkFqcGdeQXVyNjc1NTYyMjg@..jpg"
       },
       {
         "rank": 6,
@@ -409,7 +449,8 @@
           "Drama",
           "Mystery"
         ],
-        "predicted_rating": 4.46
+        "predicted_rating": 4.46,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYjBiOTYxZWItMzdiZi00NjlkLWIzZTYtYmFhZjhiMTljOTdkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg"
       },
       {
         "rank": 7,
@@ -419,7 +460,8 @@
           "Adventure",
           "Drama"
         ],
-        "predicted_rating": 4.43
+        "predicted_rating": 4.43,
+        "poster": "https://m.media-amazon.com/images/M/MV5BOWE4ZDdhNmMtNzE5ZC00NzExLTlhNGMtY2ZhYjYzODEzODA1XkEyXkFqcGdeQXVyNTAyODkwOQ@@..jpg"
       },
       {
         "rank": 8,
@@ -429,7 +471,8 @@
           "Film-Noir",
           "Romance"
         ],
-        "predicted_rating": 4.41
+        "predicted_rating": 4.41,
+        "poster": null
       },
       {
         "rank": 9,
@@ -438,7 +481,8 @@
           "Comedy",
           "War"
         ],
-        "predicted_rating": 4.39
+        "predicted_rating": 4.39,
+        "poster": null
       },
       {
         "rank": 10,
@@ -449,7 +493,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.38
+        "predicted_rating": 4.38,
+        "poster": "https://m.media-amazon.com/images/M/MV5BOGMwYmY5ZmEtMzY1Yi00OWJiLTk1Y2MtMzI2MjBhYmZkNTQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg"
       }
     ]
   },
@@ -465,7 +510,8 @@
           "Comedy",
           "Sci-Fi"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://image.tmdb.org/t/p/w500/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg"
       },
       {
         "title": "Lord of the Rings: The Fellowship of the Ring, The (2001)",
@@ -473,7 +519,8 @@
           "Adventure",
           "Fantasy"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg"
       },
       {
         "title": "Good, the Bad and the Ugly, The (Buono, il brutto, il cattivo, Il) (1966)",
@@ -482,7 +529,8 @@
           "Adventure",
           "Western"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BOTQ5NDI3MTI4MF5BMl5BanBnXkFtZTgwNDQ4ODE5MDE@..jpg"
       },
       {
         "title": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)",
@@ -490,7 +538,8 @@
           "Action",
           "Adventure"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://image.tmdb.org/t/p/w500/ceG9VzoRAVGwivFU403Wc3AHRys.jpg"
       },
       {
         "title": "Star Wars: Episode V - The Empire Strikes Back (1980)",
@@ -499,7 +548,8 @@
           "Adventure",
           "Sci-Fi"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg"
       }
     ],
     "recommendations": [
@@ -511,7 +561,8 @@
           "Horror",
           "Thriller"
         ],
-        "predicted_rating": 4.55
+        "predicted_rating": 4.55,
+        "poster": "https://image.tmdb.org/t/p/w500/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg"
       },
       {
         "rank": 2,
@@ -521,7 +572,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.5
+        "predicted_rating": 4.5,
+        "poster": "https://image.tmdb.org/t/p/w500/99X2SgyFunJFXGAYnDv3sb9pnUD.jpg"
       },
       {
         "rank": 3,
@@ -530,7 +582,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.47
+        "predicted_rating": 4.47,
+        "poster": null
       },
       {
         "rank": 4,
@@ -540,7 +593,8 @@
           "Memory",
           "Thriller"
         ],
-        "predicted_rating": 4.42
+        "predicted_rating": 4.42,
+        "poster": "https://image.tmdb.org/t/p/w500/nzlv62aC0octS5AklAiWpXLX9Z0.jpg"
       },
       {
         "rank": 5,
@@ -550,7 +604,8 @@
           "Drama",
           "Thriller"
         ],
-        "predicted_rating": 4.4
+        "predicted_rating": 4.4,
+        "poster": "https://image.tmdb.org/t/p/w500/nT97ifVT2J1yMQmeq20Qblg61T.jpg"
       },
       {
         "rank": 6,
@@ -560,7 +615,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.38
+        "predicted_rating": 4.38,
+        "poster": "https://image.tmdb.org/t/p/w500/nrmXQ0zcZUL8jFLrakWc90IR8z9.jpg"
       },
       {
         "rank": 7,
@@ -571,7 +627,8 @@
           "Sci-Fi",
           "Thriller"
         ],
-        "predicted_rating": 4.35
+        "predicted_rating": 4.35,
+        "poster": "https://image.tmdb.org/t/p/w500/Ag2B2KHKQPukjH7WutmgnnSNurZ.jpg"
       },
       {
         "rank": 8,
@@ -582,7 +639,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.32
+        "predicted_rating": 4.32,
+        "poster": "https://image.tmdb.org/t/p/w500/6YmeO4pB7XTh8P8F960O1uA14JO.jpg"
       },
       {
         "rank": 9,
@@ -592,7 +650,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.3
+        "predicted_rating": 4.3,
+        "poster": "https://image.tmdb.org/t/p/w500/ts996lKsxvjkO2yiYG0ht4qAicO.jpg"
       },
       {
         "rank": 10,
@@ -603,7 +662,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.28
+        "predicted_rating": 4.28,
+        "poster": "https://image.tmdb.org/t/p/w500/uhviyknTT5cEQXbn6vWIqfM4vGm.jpg"
       }
     ]
   },
@@ -620,7 +680,8 @@
           "Sci-Fi",
           "Thriller"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMGExOGExM2UtNWM5ZS00OWEzLTllNzYtM2NlMTJlYjBlZTJkXkEyXkFqcGdeQXVyMTQxNzMzNDI@..jpg"
       },
       {
         "title": "Hellboy (2004)",
@@ -630,7 +691,8 @@
           "Fantasy",
           "Horror"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://image.tmdb.org/t/p/w500/21hS8mD8uxBVvf8xVYR30LbbmPO.jpg"
       },
       {
         "title": "Matrix Reloaded, The (2003)",
@@ -641,7 +703,8 @@
           "Thriller",
           "IMAX"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://image.tmdb.org/t/p/w500/8xEVAe84zlL9rkfYT6dZXero4KK.jpg"
       },
       {
         "title": "American Beauty (1999)",
@@ -649,7 +712,8 @@
           "Drama",
           "Romance"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://image.tmdb.org/t/p/w500/wby9315QzVKdW9BonAefg8jGTTb.jpg"
       },
       {
         "title": "Payback (1999)",
@@ -657,7 +721,8 @@
           "Action",
           "Thriller"
         ],
-        "rating": 5.0
+        "rating": 5.0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BN2YxYTUyMTItYmU4ZS00OTIzLWIwMWQtMDY3NzRiMmIyMWMxXkEyXkFqcGdeQXVyMTQxNzMzNDI@..jpg"
       }
     ],
     "recommendations": [
@@ -668,7 +733,8 @@
           "Crime",
           "Drama"
         ],
-        "predicted_rating": 4.45
+        "predicted_rating": 4.45,
+        "poster": "https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg"
       },
       {
         "rank": 2,
@@ -679,7 +745,8 @@
           "Drama",
           "Thriller"
         ],
-        "predicted_rating": 4.4
+        "predicted_rating": 4.4,
+        "poster": "https://image.tmdb.org/t/p/w500/rt7cpEr1uP6RTZykBFhBTcRaKvG.jpg"
       },
       {
         "rank": 3,
@@ -689,7 +756,8 @@
           "Mystery",
           "Thriller"
         ],
-        "predicted_rating": 4.37
+        "predicted_rating": 4.37,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZmExNmEwYWItYmQzOS00YjA5LTk2MjktZjEyZDE1Y2QxNjA1XkEyXkFqcGdeQXVyMTQxNzMzNDI@..jpg"
       },
       {
         "rank": 4,
@@ -700,7 +768,8 @@
           "Drama",
           "Thriller"
         ],
-        "predicted_rating": 4.34
+        "predicted_rating": 4.34,
+        "poster": null
       },
       {
         "rank": 5,
@@ -710,7 +779,8 @@
           "Crime",
           "Thriller"
         ],
-        "predicted_rating": 4.31
+        "predicted_rating": 4.31,
+        "poster": "https://image.tmdb.org/t/p/w500/kJZoAHq1SLDdWjeNGtlHAnGpmFV.jpg"
       },
       {
         "rank": 6,
@@ -720,7 +790,8 @@
           "Crime",
           "Thriller"
         ],
-        "predicted_rating": 4.29
+        "predicted_rating": 4.29,
+        "poster": "https://m.media-amazon.com/images/M/MV5BNGMwNzUwNjYtZWM5NS00YzMyLWI4NjAtNjM0ZDBiMzE1YWExXkEyXkFqcGdeQXVyNDk3NzU2MTQ@..jpg"
       },
       {
         "rank": 7,
@@ -729,7 +800,8 @@
           "Comedy",
           "Crime"
         ],
-        "predicted_rating": 4.26
+        "predicted_rating": 4.26,
+        "poster": null
       },
       {
         "rank": 8,
@@ -738,7 +810,8 @@
           "Crime",
           "Drama"
         ],
-        "predicted_rating": 4.23
+        "predicted_rating": 4.23,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTcxOWYzNDYtYmM4YS00N2NkLTk0NTAtNjg1ODgwZjAxYzI3XkEyXkFqcGdeQXVyNTA4NzY1MzY@..jpg"
       },
       {
         "rank": 9,
@@ -748,7 +821,8 @@
           "Drama",
           "Thriller"
         ],
-        "predicted_rating": 4.2
+        "predicted_rating": 4.2,
+        "poster": "https://image.tmdb.org/t/p/w500/nT97ifVT2J1yMQmeq20Qblg61T.jpg"
       },
       {
         "rank": 10,
@@ -758,7 +832,8 @@
           "Drama",
           "Thriller"
         ],
-        "predicted_rating": 4.18
+        "predicted_rating": 4.18,
+        "poster": "https://m.media-amazon.com/images/M/MV5BM2M1MmVhNDgtNmI0YS00ZDNmLTkyNjctNTJiYTQ2N2NmYzc2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg"
       }
     ]
   }

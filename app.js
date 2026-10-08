@@ -1,38 +1,47 @@
 /**
  * CineMatch — MovieLens Recommendation Engine
- * Philosophy: Minimal code, high efficiency, zero AI-slop, secure DOM escaping.
+ * Streaming Interface & Real-time Client ML Engine
+ * Philosophy: Zero AI-slop, authentic streaming feel, secure DOM escaping, zero-latency.
  */
 
-// State
+// Global State
 let moviesData = [];
 let cfUsersData = {};
+let featuredMovies = [];
 let selectedMovie = null;
-let currentTab = 'content-based';
 
-// DOM Elements
-const statusBadge = document.getElementById('statusBadge');
+// DOM Elements - Navigation & Catalog
+const catalogStatus = document.getElementById('catalogStatus');
+const mosaicGrid = document.getElementById('mosaicGrid');
+const popularCarousel = document.getElementById('popularCarousel');
+
+// DOM Elements - Content-Based
 const movieSearchInput = document.getElementById('movieSearchInput');
 const clearSearchBtn = document.getElementById('clearSearchBtn');
 const autocompleteList = document.getElementById('autocompleteList');
-const activeMovieCard = document.getElementById('activeMovieCard');
-const targetTitle = document.getElementById('targetTitle');
-const targetYear = document.getElementById('targetYear');
-const targetGenres = document.getElementById('targetGenres');
-const targetRating = document.getElementById('targetRating');
-const targetVotes = document.getElementById('targetVotes');
-const resultsHeader = document.getElementById('resultsHeader');
-const recommendationsGrid = document.getElementById('recommendationsGrid');
-const emptyState = document.getElementById('emptyState');
-const loadingState = document.getElementById('loadingState');
 const quickPickGroup = document.getElementById('quickPickGroup');
+const activeMovieSpotlight = document.getElementById('activeMovieSpotlight');
+const spotlightPoster = document.getElementById('spotlightPoster');
+const spotlightTitle = document.getElementById('spotlightTitle');
+const spotlightYear = document.getElementById('spotlightYear');
+const spotlightRating = document.getElementById('spotlightRating');
+const spotlightVotes = document.getElementById('spotlightVotes');
+const spotlightGenres = document.getElementById('spotlightGenres');
+const cbResultsBar = document.getElementById('cbResultsBar');
+const cbPrecision = document.getElementById('cbPrecision');
+const cbRecommendationsGrid = document.getElementById('cbRecommendationsGrid');
+const cbEmptyState = document.getElementById('cbEmptyState');
+const cbLoadingState = document.getElementById('cbLoadingState');
 
-// CF Elements
-const userSelect = document.getElementById('userSelect');
-const userDescription = document.getElementById('userDescription');
-const userTopRatedList = document.getElementById('userTopRatedList');
-const userPredictedList = document.getElementById('userPredictedList');
+// DOM Elements - Collaborative
+const userSelectDropdown = document.getElementById('userSelectDropdown');
+const userPickerDetails = document.getElementById('userPickerDetails');
+const cfFavoritesList = document.getElementById('cfFavoritesList');
+const cfPredictedList = document.getElementById('cfPredictedList');
 
-// Security: Escape HTML strings to prevent XSS
+// ==========================================================================
+// 1. SECURITY & HELPER FUNCTIONS
+// ==========================================================================
 function escapeHTML(str) {
   if (!str) return '';
   return String(str)
@@ -43,64 +52,133 @@ function escapeHTML(str) {
     .replace(/'/g, '&#39;');
 }
 
-// -------------------------------------------------------------
-// 1. DATA INITIALIZATION
-// -------------------------------------------------------------
+function getPosterUrl(movie) {
+  if (movie && movie.poster && movie.poster.startsWith('http')) {
+    return movie.poster;
+  }
+  // Generate clean dark slate SVG placeholder with movie title
+  const title = movie && movie.title ? movie.title : 'Film';
+  const cleanTitle = title.length > 25 ? title.slice(0, 23) + '...' : title;
+  const genres = movie && movie.genres ? movie.genres.slice(0, 2).join(' • ') : 'MovieLens';
+
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="450" viewBox="0 0 300 450">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#191c24"/>
+          <stop offset="100%" stop-color="#0c0e12"/>
+        </linearGradient>
+      </defs>
+      <rect width="300" height="450" fill="url(#g)"/>
+      <rect x="12" y="12" width="276" height="426" rx="8" fill="none" stroke="#252a36" stroke-width="2"/>
+      <text x="150" y="190" font-family="-apple-system, sans-serif" font-size="34" fill="#f59e0b" text-anchor="middle">🎬</text>
+      <text x="150" y="235" font-family="-apple-system, sans-serif" font-weight="bold" font-size="15" fill="#f8fafc" text-anchor="middle">
+        ${cleanTitle}
+      </text>
+      <text x="150" y="265" font-family="-apple-system, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">
+        ${genres}
+      </text>
+    </svg>
+  `)}`;
+}
+
+// ==========================================================================
+// 2. INITIALIZATION
+// ==========================================================================
 async function initApp() {
   try {
-    statusBadge.textContent = 'Memuat Data...';
-    
-    // Fetch both datasets concurrently
-    const [moviesRes, cfRes] = await Promise.all([
+    catalogStatus.textContent = '● Memuat Katalog...';
+
+    // Load all data concurrently
+    const [moviesRes, cfRes, featRes] = await Promise.all([
       fetch('data/movies.json'),
-      fetch('data/cf_users.json')
+      fetch('data/cf_users.json'),
+      fetch('data/featured_movies.json')
     ]);
 
     if (!moviesRes.ok || !cfRes.ok) {
-      throw new Error('Gagal memuat berkas data katalog atau profil rekomendasi.');
+      throw new Error('Gagal memuat berkas data katalog atau profil.');
     }
 
     moviesData = await moviesRes.json();
     cfUsersData = await cfRes.json();
+    featuredMovies = featRes.ok ? await featRes.json() : moviesData.slice(0, 24);
 
-    statusBadge.textContent = `● ${moviesData.length.toLocaleString('id-ID')} Film Siap`;
-    statusBadge.classList.add('status-ready');
+    catalogStatus.textContent = `● ${moviesData.length.toLocaleString('id-ID')} Film Siap`;
 
-    setupEventListeners();
-    setupCFSection();
+    // Render Components
+    renderHeroMosaic();
+    renderPopularCarousel();
+    setupSearchAndAutocomplete();
+    setupCollaborativeSection();
 
-    // Default target movie: "Toy Story (1995)"
-    selectMovieByTitle('Toy Story (1995)');
+    // Default active movie: "Toy Story (1995)"
+    selectMovieByTitle('Toy Story (1995)', false);
 
   } catch (err) {
     console.error('Inisialisasi aplikasi gagal:', err);
-    statusBadge.textContent = 'Gagal Memuat Data';
-    statusBadge.style.color = '#ef4444';
+    catalogStatus.textContent = '● Gagal Memuat Data';
+    catalogStatus.style.color = '#ef4444';
   }
 }
 
-// -------------------------------------------------------------
-// 2. TAB SWITCHING
-// -------------------------------------------------------------
-function setupEventListeners() {
-  // Tabs
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tabId = btn.getAttribute('data-tab');
-      switchTab(tabId);
-    });
-  });
+// ==========================================================================
+// 3. HERO MOSAIC POSTER WALL (LIKE PRIME VIDEO)
+// ==========================================================================
+function renderHeroMosaic() {
+  if (!mosaicGrid) return;
 
-  // Search Input with Debounce
-  let debounceTimeout = null;
+  // Take 9 top iconic movies with posters for 3x3 mosaic
+  const mosaicMovies = featuredMovies.slice(0, 9);
+
+  mosaicGrid.innerHTML = mosaicMovies.map(m => `
+    <div class="mosaic-item" onclick="selectMovieByTitle('${escapeHTML(m.title.replace(/'/g, "\\'"))}', true)" title="Klik untuk rekomendasi: ${escapeHTML(m.title)}">
+      <img class="mosaic-img" src="${getPosterUrl(m)}" alt="${escapeHTML(m.title)}" loading="lazy">
+      <div class="mosaic-overlay">
+        <span class="mosaic-title">${escapeHTML(m.title)}</span>
+        <span class="mosaic-year">${m.year || ''}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ==========================================================================
+// 4. STREAMING CAROUSEL (POPULAR MOVIES)
+// ==========================================================================
+function renderPopularCarousel() {
+  if (!popularCarousel) return;
+
+  popularCarousel.innerHTML = featuredMovies.map(m => `
+    <div class="carousel-card" onclick="selectMovieByTitle('${escapeHTML(m.title.replace(/'/g, "\\'"))}', true)">
+      <div class="carousel-poster-wrap">
+        <img class="carousel-poster-img" src="${getPosterUrl(m)}" alt="${escapeHTML(m.title)}" loading="lazy">
+        <span class="carousel-badge-top">★ ${m.rating || 4.0}</span>
+      </div>
+      <div class="carousel-info">
+        <h4 class="carousel-title" title="${escapeHTML(m.title)}">${escapeHTML(m.title)}</h4>
+        <div class="carousel-meta-row">
+          <span>${m.year || ''}</span>
+          <span>${m.votes ? m.votes + ' ulasan' : ''}</span>
+        </div>
+        <button class="carousel-cta">Rekomendasikan Serupa</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ==========================================================================
+// 5. SEARCH & AUTOCOMPLETE
+// ==========================================================================
+function setupSearchAndAutocomplete() {
+  let debounceTimer = null;
+
   movieSearchInput.addEventListener('input', (e) => {
     const val = e.target.value.trim();
     clearSearchBtn.style.display = val ? 'block' : 'none';
 
-    clearTimeout(debounceTimeout);
-    debounceTimeout = setTimeout(() => {
-      handleAutocomplete(val);
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      renderAutocomplete(val);
     }, 150);
   });
 
@@ -113,41 +191,25 @@ function setupEventListeners() {
 
   // Close autocomplete on click outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.search-input-wrapper')) {
+    if (!e.target.closest('.search-field-wrapper')) {
       autocompleteList.style.display = 'none';
     }
   });
 
   // Quick picks
   quickPickGroup.addEventListener('click', (e) => {
-    const chip = e.target.closest('.chip');
+    const chip = e.target.closest('.quick-chip');
     if (chip) {
       const title = chip.getAttribute('data-title');
-      selectMovieByTitle(title);
+      selectMovieByTitle(title, true);
     }
   });
 
-  // Keyboard navigation on search
-  movieSearchInput.addEventListener('keydown', handleKeyNavigation);
+  // Keyboard navigation
+  movieSearchInput.addEventListener('keydown', handleSearchKeyNav);
 }
 
-function switchTab(tabId) {
-  currentTab = tabId;
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    const active = btn.getAttribute('data-tab') === tabId;
-    btn.classList.toggle('active', active);
-    btn.setAttribute('aria-selected', active);
-  });
-
-  document.querySelectorAll('.tab-content').forEach(section => {
-    section.classList.toggle('active', section.id === `tab-${tabId}`);
-  });
-}
-
-// -------------------------------------------------------------
-// 3. AUTOCOMPLETE & SELECTION
-// -------------------------------------------------------------
-function handleAutocomplete(query) {
+function renderAutocomplete(query) {
   if (!query || query.length < 2) {
     autocompleteList.style.display = 'none';
     return;
@@ -156,118 +218,130 @@ function handleAutocomplete(query) {
   const q = query.toLowerCase();
   const matches = moviesData
     .filter(m => m.title.toLowerCase().includes(q))
-    .slice(0, 8);
+    .slice(0, 7);
 
   if (matches.length === 0) {
-    autocompleteList.innerHTML = `<div class="autocomplete-item"><span class="item-title">Tidak ditemukan film untuk "${escapeHTML(query)}"</span></div>`;
+    autocompleteList.innerHTML = `
+      <div class="autocomplete-row" style="cursor: default;">
+        <div class="auto-info">
+          <span class="auto-title">Tidak ditemukan film untuk "${escapeHTML(query)}"</span>
+        </div>
+      </div>
+    `;
     autocompleteList.style.display = 'block';
     return;
   }
 
   autocompleteList.innerHTML = matches.map(m => `
-    <div class="autocomplete-item" data-id="${m.id}">
-      <span class="item-title">${escapeHTML(m.title)}</span>
-      <span class="item-genres">${escapeHTML(m.genres.join(' • '))}</span>
+    <div class="autocomplete-row" data-id="${m.id}">
+      <img class="auto-poster-thumb" src="${getPosterUrl(m)}" alt="" loading="lazy">
+      <div class="auto-info">
+        <span class="auto-title">${escapeHTML(m.title)}</span>
+        <span class="auto-genres">${escapeHTML((m.genres || []).join(' • '))}</span>
+      </div>
     </div>
   `).join('');
 
   autocompleteList.style.display = 'block';
 
-  // Add click handlers
-  autocompleteList.querySelectorAll('.autocomplete-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const id = parseInt(item.getAttribute('data-id'), 10);
+  // Attach click events
+  autocompleteList.querySelectorAll('.autocomplete-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const id = parseInt(row.getAttribute('data-id'), 10);
       const movie = moviesData.find(m => m.id === id);
       if (movie) {
-        selectMovie(movie);
+        selectMovie(movie, true);
       }
       autocompleteList.style.display = 'none';
     });
   });
 }
 
-let activeIndex = -1;
-function handleKeyNavigation(e) {
-  const items = autocompleteList.querySelectorAll('.autocomplete-item');
+let activeNavIndex = -1;
+function handleSearchKeyNav(e) {
+  const items = autocompleteList.querySelectorAll('.autocomplete-row');
   if (!items.length || autocompleteList.style.display === 'none') return;
 
   if (e.key === 'ArrowDown') {
     e.preventDefault();
-    activeIndex = (activeIndex + 1) % items.length;
-    updateActiveItem(items);
+    activeNavIndex = (activeNavIndex + 1) % items.length;
+    items.forEach((item, idx) => item.classList.toggle('selected', idx === activeNavIndex));
   } else if (e.key === 'ArrowUp') {
     e.preventDefault();
-    activeIndex = (activeIndex - 1 + items.length) % items.length;
-    updateActiveItem(items);
+    activeNavIndex = (activeNavIndex - 1 + items.length) % items.length;
+    items.forEach((item, idx) => item.classList.toggle('selected', idx === activeNavIndex));
   } else if (e.key === 'Enter') {
     e.preventDefault();
-    if (activeIndex >= 0 && activeIndex < items.length) {
-      items[activeIndex].click();
+    if (activeNavIndex >= 0 && activeNavIndex < items.length) {
+      items[activeNavIndex].click();
     }
   } else if (e.key === 'Escape') {
     autocompleteList.style.display = 'none';
   }
 }
 
-function updateActiveItem(items) {
-  items.forEach((item, idx) => {
-    item.classList.toggle('selected', idx === activeIndex);
-  });
-}
+// ==========================================================================
+// 6. CONTENT-BASED RECOMMENDATION ENGINE (IN-BROWSER COSINE SIMILARITY)
+// ==========================================================================
+function selectMovieByTitle(title, shouldScroll = false) {
+  const clean = title.toLowerCase().trim();
+  const movie = moviesData.find(m => m.title.toLowerCase().trim() === clean)
+             || moviesData.find(m => m.title.toLowerCase().includes(clean));
 
-function selectMovieByTitle(title) {
-  const movie = moviesData.find(m => m.title.toLowerCase() === title.toLowerCase()) 
-             || moviesData.find(m => m.title.toLowerCase().includes(title.toLowerCase()));
   if (movie) {
-    selectMovie(movie);
+    selectMovie(movie, shouldScroll);
   }
 }
 
-function selectMovie(movie) {
+function selectMovie(movie, shouldScroll = false) {
   selectedMovie = movie;
   movieSearchInput.value = movie.title;
   clearSearchBtn.style.display = 'block';
   autocompleteList.style.display = 'none';
 
-  // Render Target Movie Details
-  targetTitle.textContent = movie.title;
-  targetYear.textContent = movie.year ? `Tahun: ${movie.year}` : '';
-  targetRating.textContent = movie.rating > 0 ? `★ ${movie.rating} / 5.0` : 'Belum ada rating';
-  targetVotes.textContent = movie.votes > 0 ? `(${movie.votes.toLocaleString('id-ID')} ulasan)` : '';
+  // Render Spotlight Card
+  spotlightPoster.src = getPosterUrl(movie);
+  spotlightTitle.textContent = movie.title;
+  spotlightYear.textContent = movie.year ? `Tahun: ${movie.year}` : '';
+  spotlightRating.textContent = movie.rating > 0 ? `★ ${movie.rating} / 5.0` : 'Belum ada rating';
+  spotlightVotes.textContent = movie.votes > 0 ? `${movie.votes.toLocaleString('id-ID')} ulasan komunitas` : 'Film katalog';
 
-  targetGenres.innerHTML = movie.genres.map(g => `
-    <span class="genre-pill highlight">${escapeHTML(g)}</span>
+  spotlightGenres.innerHTML = (movie.genres || []).map(g => `
+    <span class="genre-tag highlight">${escapeHTML(g)}</span>
   `).join('');
 
-  activeMovieCard.style.display = 'block';
+  activeMovieSpotlight.style.display = 'grid';
 
-  // Calculate & Render Recommendations
+  // Run Real-time In-browser Cosine Similarity
   runContentBasedRecommendations(movie);
+
+  // Smooth scroll to recommendation area if requested
+  if (shouldScroll) {
+    const targetEl = document.getElementById('content-based-section');
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
 
-// -------------------------------------------------------------
-// 4. CONTENT-BASED SIMILARITY ENGINE (IN-BROWSER COSINE SIMILARITY)
-// -------------------------------------------------------------
 function runContentBasedRecommendations(target) {
-  loadingState.style.display = 'block';
-  recommendationsGrid.innerHTML = '';
-  emptyState.style.display = 'none';
-  resultsHeader.style.display = 'none';
+  cbLoadingState.style.display = 'block';
+  cbRecommendationsGrid.innerHTML = '';
+  cbEmptyState.style.display = 'none';
+  cbResultsBar.style.display = 'none';
 
-  // Calculate TF-IDF Cosine Similarity against all 9,737 movies
   const targetVec = target.tfidf || {};
-  const targetGenresSet = new Set(target.genres);
+  const targetGenresSet = new Set(target.genres || []);
 
   const scoredMovies = [];
 
   for (let i = 0; i < moviesData.length; i++) {
     const candidate = moviesData[i];
-    if (candidate.id === target.id) continue; // Skip target itself
+    if (candidate.id === target.id) continue;
 
     const candidateVec = candidate.tfidf || {};
     let dotProduct = 0;
 
-    // Dot product on sparse tfidf dictionary
     for (const token in targetVec) {
       if (candidateVec[token]) {
         dotProduct += targetVec[token] * candidateVec[token];
@@ -275,93 +349,93 @@ function runContentBasedRecommendations(target) {
     }
 
     if (dotProduct > 0.001) {
-      // Find matching genres
-      const matchGenres = candidate.genres.filter(g => targetGenresSet.has(g));
+      const matchGenres = (candidate.genres || []).filter(g => targetGenresSet.has(g));
       scoredMovies.push({
         movie: candidate,
         score: Math.min(1.0, dotProduct),
-        matchCount: matchGenres.length,
-        matchGenres: matchGenres
+        matchCount: matchGenres.length
       });
     }
   }
 
-  // Sort by score descending, then by vote count
+  // Sort by Cosine Score descending, then by votes
   scoredMovies.sort((a, b) => {
     if (Math.abs(b.score - a.score) > 0.0001) {
       return b.score - a.score;
     }
-    return b.movie.votes - a.movie.votes;
+    return (b.movie.votes || 0) - (a.movie.votes || 0);
   });
 
   const top10 = scoredMovies.slice(0, 10);
 
-  loadingState.style.display = 'none';
-  resultsHeader.style.display = 'flex';
+  cbLoadingState.style.display = 'none';
+  cbResultsBar.style.display = 'flex';
 
   if (top10.length === 0) {
-    recommendationsGrid.innerHTML = `
-      <div class="empty-state" style="grid-column: 1 / -1;">
-        <p>Tidak ditemukan film dengan kemiripan genre yang cukup tinggi untuk film ini.</p>
+    cbRecommendationsGrid.innerHTML = `
+      <div class="empty-state-card" style="grid-column: 1 / -1;">
+        <p>Tidak ditemukan film dengan kemiripan genre yang memadai untuk film ini.</p>
       </div>
     `;
     return;
   }
 
-  // Calculate precision@10 (relevant if matchCount >= 2 or candidate genres overlap)
+  // Calculate Precision@10 (relevant if matchCount >= 2 or score >= 0.5)
   const relevantCount = top10.filter(item => item.matchCount >= 2 || item.score >= 0.5).length;
   const precisionVal = Math.round((relevantCount / top10.length) * 100);
-  document.getElementById('cbPrecision').textContent = `${precisionVal}%`;
+  cbPrecision.textContent = `${precisionVal}.00%`;
 
-  // Render cards
-  recommendationsGrid.innerHTML = top10.map((item, idx) => {
+  // Render Top-10 Poster Cards
+  cbRecommendationsGrid.innerHTML = top10.map((item, idx) => {
     const m = item.movie;
     const matchPct = Math.round(item.score * 100);
     return `
-      <div class="movie-card">
-        <div class="card-top">
-          <span class="card-rank">#${idx + 1}</span>
-          <span class="similarity-badge">${matchPct}% Match</span>
+      <div class="rec-card">
+        <div class="rec-poster-box">
+          <img class="rec-poster-img" src="${getPosterUrl(m)}" alt="${escapeHTML(m.title)}" loading="lazy">
+          <span class="rec-rank-badge">#${idx + 1}</span>
+          <span class="rec-score-badge">${matchPct}% Match</span>
         </div>
-        <div class="similarity-bar-bg">
-          <div class="similarity-bar-fill" style="width: ${matchPct}%;"></div>
-        </div>
-        <h4 class="card-title">${escapeHTML(m.title)}</h4>
-        <div class="card-genres">
-          ${m.genres.map(g => {
-            const isMatch = targetGenresSet.has(g);
-            return `<span class="genre-pill ${isMatch ? 'highlight' : ''}">${escapeHTML(g)}</span>`;
-          }).join('')}
-        </div>
-        <div class="card-actions">
-          <span class="text-muted">Cosine: ${item.score.toFixed(3)}</span>
-          <button class="btn-select-target" onclick="selectMovieByTitle('${escapeHTML(m.title.replace(/'/g, "\\'"))}')">
-            Jadikan Acuan →
-          </button>
+        <div class="rec-info">
+          <div class="rec-title-block">
+            <h4 class="rec-title" title="${escapeHTML(m.title)}">${escapeHTML(m.title)}</h4>
+            <span class="rec-year">${m.year || ''}</span>
+          </div>
+          <div class="rec-genres-list">
+            ${(m.genres || []).map(g => {
+              const isMatch = targetGenresSet.has(g);
+              return `<span class="genre-tag ${isMatch ? 'highlight' : ''}">${escapeHTML(g)}</span>`;
+            }).join('')}
+          </div>
+          <div class="rec-action-row">
+            <span class="rec-cosine-val">Cos: ${item.score.toFixed(3)}</span>
+            <button class="btn-pivot-target" onclick="selectMovieByTitle('${escapeHTML(m.title.replace(/'/g, "\\'"))}', true)">
+              Jadikan Acuan →
+            </button>
+          </div>
         </div>
       </div>
     `;
   }).join('');
 }
 
-// -------------------------------------------------------------
-// 5. COLLABORATIVE FILTERING TAB
-// -------------------------------------------------------------
-function setupCFSection() {
+// ==========================================================================
+// 7. COLLABORATIVE FILTERING (DEEP LEARNING RECOMMENDERNET)
+// ==========================================================================
+function setupCollaborativeSection() {
   const userIds = Object.keys(cfUsersData);
   if (!userIds.length) return;
 
-  userSelect.innerHTML = userIds.map(uid => `
+  userSelectDropdown.innerHTML = userIds.map(uid => `
     <option value="${uid}">${escapeHTML(cfUsersData[uid].label)}</option>
   `).join('');
 
-  userSelect.addEventListener('change', () => {
-    const uid = userSelect.value;
-    renderUserProfile(uid);
+  userSelectDropdown.addEventListener('change', () => {
+    renderUserProfile(userSelectDropdown.value);
   });
 
   // Default to User 133
-  userSelect.value = '133';
+  userSelectDropdown.value = '133';
   renderUserProfile('133');
 }
 
@@ -369,33 +443,30 @@ function renderUserProfile(userId) {
   const profile = cfUsersData[userId];
   if (!profile) return;
 
-  userDescription.textContent = `Jumlah riwayat penilaian pengguna ini: ${profile.ratings_count.toLocaleString('id-ID')} film.`;
+  userPickerDetails.textContent = `Riwayat total penilaian pengguna ini: ${profile.ratings_count.toLocaleString('id-ID')} film pada dataset MovieLens.`;
 
-  // Render Top Rated Past Movies
-  userTopRatedList.innerHTML = profile.top_rated.map((item, idx) => `
-    <div class="cf-item">
-      <div class="cf-item-left">
-        <span class="cf-rank-num">★</span>
-        <div class="cf-item-info">
-          <span class="cf-item-title">${escapeHTML(item.title)}</span>
-          <span class="cf-item-genres">${escapeHTML(item.genres.join(' • '))}</span>
-        </div>
+  // Render Past Favorites List
+  cfFavoritesList.innerHTML = profile.top_rated.map(item => `
+    <div class="cf-movie-row">
+      <img class="cf-row-poster" src="${item.poster || getPosterUrl(item)}" alt="${escapeHTML(item.title)}" loading="lazy">
+      <div class="cf-row-center">
+        <span class="cf-row-title">${escapeHTML(item.title)}</span>
+        <span class="cf-row-genres">${escapeHTML((item.genres || []).join(' • '))}</span>
       </div>
-      <span class="cf-score-pill">${item.rating.toFixed(1)}</span>
+      <span class="cf-row-score rating-gold">★ ${item.rating.toFixed(1)}</span>
     </div>
   `).join('');
 
-  // Render Predicted Recommendations
-  userPredictedList.innerHTML = profile.recommendations.map(item => `
-    <div class="cf-item">
-      <div class="cf-item-left">
-        <span class="cf-rank-num">#${item.rank}</span>
-        <div class="cf-item-info">
-          <span class="cf-item-title">${escapeHTML(item.title)}</span>
-          <span class="cf-item-genres">${escapeHTML(item.genres.join(' • '))}</span>
-        </div>
+  // Render Predicted Recommendations List
+  cfPredictedList.innerHTML = profile.recommendations.map(item => `
+    <div class="cf-movie-row">
+      <img class="cf-row-poster" src="${item.poster || getPosterUrl(item)}" alt="${escapeHTML(item.title)}" loading="lazy">
+      <div class="cf-row-center">
+        <span class="cf-row-rank">Peringkat #${item.rank}</span>
+        <span class="cf-row-title">${escapeHTML(item.title)}</span>
+        <span class="cf-row-genres">${escapeHTML((item.genres || []).join(' • '))}</span>
       </div>
-      <span class="cf-score-pill top-score">Prediksi: ${item.predicted_rating.toFixed(2)}</span>
+      <span class="cf-row-score">Prediksi: ${item.predicted_rating.toFixed(2)}</span>
     </div>
   `).join('');
 }
@@ -403,5 +474,5 @@ function renderUserProfile(userId) {
 // Global scope binding for inline onclick
 window.selectMovieByTitle = selectMovieByTitle;
 
-// Boot
+// Initialize on DOM Ready
 document.addEventListener('DOMContentLoaded', initApp);

@@ -1,0 +1,335 @@
+[
+  {
+    "id": 356,
+    "title": "Forrest Gump (1994)",
+    "year": 1994,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "votes": 329,
+    "rating": 4.2,
+    "poster": "https://image.tmdb.org/t/p/w500/Cw4hIUIAmSYfK9QfaUW5igp9La.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/66Kn4XWhkuPkJxOJyPEx4U2CUfN.jpg"
+  },
+  {
+    "id": 318,
+    "title": "Shawshank Redemption, The (1994)",
+    "year": 1994,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "votes": 317,
+    "rating": 4.4,
+    "poster": "https://image.tmdb.org/t/p/w500/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/pNjh59JSxChQktamG3LMp9ZoQzp.jpg"
+  },
+  {
+    "id": 296,
+    "title": "Pulp Fiction (1994)",
+    "year": 1994,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "votes": 307,
+    "rating": 4.2,
+    "poster": "https://image.tmdb.org/t/p/w500/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg"
+  },
+  {
+    "id": 593,
+    "title": "Silence of the Lambs, The (1991)",
+    "year": 1991,
+    "genres": [
+      "Crime",
+      "Horror",
+      "Thriller"
+    ],
+    "votes": 279,
+    "rating": 4.2,
+    "poster": "https://image.tmdb.org/t/p/w500/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/mbOx1wxMLikzwWUO9TKAcFIy6op.jpg"
+  },
+  {
+    "id": 2571,
+    "title": "Matrix, The (1999)",
+    "year": 1999,
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "votes": 278,
+    "rating": 4.2,
+    "poster": "https://image.tmdb.org/t/p/w500/dXNAPwY7VrqMAo51EKhhCJfaGb5.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/tlm8UkiQsitc8rSuIAscQDCnP8d.jpg"
+  },
+  {
+    "id": 260,
+    "title": "Star Wars: Episode IV - A New Hope (1977)",
+    "year": 1977,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "votes": 251,
+    "rating": 4.2,
+    "poster": "https://image.tmdb.org/t/p/w500/fai0rspsNeJCS69wHNjOdWxcI7P.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg"
+  },
+  {
+    "id": 480,
+    "title": "Jurassic Park (1993)",
+    "year": 1993,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "votes": 238,
+    "rating": 3.8,
+    "poster": "https://image.tmdb.org/t/p/w500/d9mtMGQDLANKieb9PbD3yK7xxzo.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/4SyDTF02R5BepqSdQmOaNCHObzF.jpg"
+  },
+  {
+    "id": 110,
+    "title": "Braveheart (1995)",
+    "year": 1995,
+    "genres": [
+      "Action",
+      "Drama",
+      "War"
+    ],
+    "votes": 237,
+    "rating": 4.0,
+    "poster": "https://image.tmdb.org/t/p/w500/or1gBugydmjToAEq7OZY0owwFk.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/1m1c5gIWWkb1FEC9lzsoXHhhs7b.jpg"
+  },
+  {
+    "id": 589,
+    "title": "Terminator 2: Judgment Day (1991)",
+    "year": 1991,
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "votes": 224,
+    "rating": 4.0,
+    "poster": "https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/izkMjmhauFx9DjoBQqM5sM5WAwE.jpg"
+  },
+  {
+    "id": 527,
+    "title": "Schindler's List (1993)",
+    "year": 1993,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "votes": 220,
+    "rating": 4.2,
+    "poster": "https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/zb6fM1CX41D9rF9hdgclu0peUmy.jpg"
+  },
+  {
+    "id": 2959,
+    "title": "Fight Club (1999)",
+    "year": 1999,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "votes": 218,
+    "rating": 4.3,
+    "poster": "https://image.tmdb.org/t/p/w500/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/c6OLXfKAk5BKeR6broC8pYiCquX.jpg"
+  },
+  {
+    "id": 1,
+    "title": "Toy Story (1995)",
+    "year": 1995,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Children",
+      "Comedy",
+      "Fantasy"
+    ],
+    "votes": 215,
+    "rating": 3.9,
+    "poster": "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/3Rfvhy1Nl6sSGJwyjb0QiZzZYlB.jpg"
+  },
+  {
+    "id": 1196,
+    "title": "Star Wars: Episode V - The Empire Strikes Back (1980)",
+    "year": 1980,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "votes": 211,
+    "rating": 4.2,
+    "poster": "https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/k9pshruhCpJAdH9RaGJO6jaWQ4X.jpg"
+  },
+  {
+    "id": 50,
+    "title": "Usual Suspects, The (1995)",
+    "year": 1995,
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "votes": 204,
+    "rating": 4.2,
+    "poster": "https://image.tmdb.org/t/p/w500/99X2SgyFunJFXGAYnDv3sb9pnUD.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hy0Hx9fMPk2fmw26Li60z1S2giU.jpg"
+  },
+  {
+    "id": 2858,
+    "title": "American Beauty (1999)",
+    "year": 1999,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "votes": 204,
+    "rating": 4.1,
+    "poster": "https://image.tmdb.org/t/p/w500/wby9315QzVKdW9BonAefg8jGTTb.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/2ndw55F40IkALzWyjCCza3M6nqM.jpg"
+  },
+  {
+    "id": 47,
+    "title": "Seven (a.k.a. Se7en) (1995)",
+    "year": 1995,
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "votes": 203,
+    "rating": 4.0,
+    "poster": "https://image.tmdb.org/t/p/w500/191nKfP0ehp3uIvWqgPbFmI4lv9.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/i5H7zusQGsysGQ8i6P361Vnr0n2.jpg"
+  },
+  {
+    "id": 780,
+    "title": "Independence Day (a.k.a. ID4) (1996)",
+    "year": 1996,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "votes": 202,
+    "rating": 3.4,
+    "poster": "https://image.tmdb.org/t/p/w500/p0BPQGSPoSa8Ml0DAf2mB2kCU0R.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/kFI1oF6KVnLEbUT7yLIbKXeyvu.jpg"
+  },
+  {
+    "id": 150,
+    "title": "Apollo 13 (1995)",
+    "year": 1995,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "IMAX"
+    ],
+    "votes": 201,
+    "rating": 3.8,
+    "poster": "https://image.tmdb.org/t/p/w500/tVeKscCm2fY1xDXZk8PgnZ87h9S.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/n0FDJI9c0uWiZwm8wgXVjaMBn96.jpg"
+  },
+  {
+    "id": 1198,
+    "title": "Raiders of the Lost Ark (Indiana Jones and the Raiders of the Lost Ark) (1981)",
+    "year": 1981,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "votes": 200,
+    "rating": 4.2,
+    "poster": "https://image.tmdb.org/t/p/w500/ceG9VzoRAVGwivFU403Wc3AHRys.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/zPACwR32amTNvzId9qyapCWXYDJ.jpg"
+  },
+  {
+    "id": 4993,
+    "title": "Lord of the Rings: The Fellowship of the Ring, The (2001)",
+    "year": 2001,
+    "genres": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "votes": 198,
+    "rating": 4.1,
+    "poster": "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/z51Wzj94hvAIsWfknifKTqKJRwp.jpg"
+  },
+  {
+    "id": 1210,
+    "title": "Star Wars: Episode VI - Return of the Jedi (1983)",
+    "year": 1983,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "votes": 196,
+    "rating": 4.1,
+    "poster": "https://image.tmdb.org/t/p/w500/jQYlydvHm3kUix1f8prMucrplhm.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/ziECpBRIyclmBNaFSWlvCfsKbMD.jpg"
+  },
+  {
+    "id": 858,
+    "title": "Godfather, The (1972)",
+    "year": 1972,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "votes": 192,
+    "rating": 4.3,
+    "poster": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/ejdD20cdHNFAYAN2DlqPToXKyzx.jpg"
+  },
+  {
+    "id": 457,
+    "title": "Fugitive, The (1993)",
+    "year": 1993,
+    "genres": [
+      "Thriller"
+    ],
+    "votes": 190,
+    "rating": 4.0,
+    "poster": "https://image.tmdb.org/t/p/w500/b3rEtLKyOnF89mcK75GXDXdmOEf.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/7WVRxZ7KZmzoHnUkAjnEFT4o6Dw.jpg"
+  },
+  {
+    "id": 592,
+    "title": "Batman (1989)",
+    "year": 1989,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "votes": 189,
+    "rating": 3.4,
+    "poster": "https://image.tmdb.org/t/p/w500/cij4dd21v2Rk2YtUQbV5kW69WB2.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/rhc7OF7tC9HPu0X8DBKQJzaGRbu.jpg"
+  }
+]
